@@ -1,7 +1,16 @@
+/* Global reset */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Tailwind CSS base styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Global styles */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -18,16 +27,33 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  background-color: #121212; /* Fallback background color */
   background: linear-gradient(
       to bottom,
-      transparent,
+      rgb(var(--background-start-rgb)),
       rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    );
 }
 
+/* Ensure full height for html and body */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#__next {
+  height: 100%;
+}
+
+/* Custom utility class */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Ensure consistent background for main content */
+main {
+  flex: 1;
+  background-color: #121212; /* Same as body to ensure consistency */
 }
