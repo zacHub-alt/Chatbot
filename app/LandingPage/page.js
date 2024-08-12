@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, useMediaQuery, useTheme, Box, Container, Grid, Accordion, AccordionSummary, AccordionDetails, Link, Card, CardContent } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, useMediaQuery, useTheme, Box, Container, Grid, Card, CardContent } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -180,7 +180,7 @@ const LandingPage = () => {
 						HybridChatbot: Your Personal Customer Service Assistant
 					</Typography>
 					<Typography variant="h6" sx={{ mb: 4 }}>
-						"Meet Hybrid, your AI-powered companion for effortless customer service. Get instant answers, personalized support, and seamless interactions - all in one conversation."
+						"Meet Hybrid, your AI-powered companion for effortless customer service. Get instant answers, personalized support, and seamless interactions &mdash; all in one conversation."
 					</Typography>
 					<Button
 						onClick={handleSignUp}
@@ -217,8 +217,9 @@ const LandingPage = () => {
 					</Grid>
 				</Container>
 			</Box>
-		{/* Product Contributors Section */}
-		<Box sx={{ py: 5, background: '#121212', color: 'white', height: 'auto' }}>
+			
+			{/* Product Contributors Section */}
+			<Box sx={{ py: 5, background: '#121212', color: 'white', height: 'auto' }}>
 				<Container maxWidth="md">
 					<Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom>
 						Product Contributors
@@ -226,12 +227,29 @@ const LandingPage = () => {
 					<Typography variant="h6" textAlign="center" sx={{ mb: 2 }}>
 						This project was made possible due to the contribution from my teammates Utta and Sharif.
 					</Typography>
-					{/* Add additional content for contributors here */}
+					{/* Add team member details or links here */}
 				</Container>
+			</Box>
+
+			{/* Footer Section */}
+			<Box
+				sx={{
+					background: '#0d0d0d',
+					color: 'white',
+					p: 2,
+					textAlign: 'center',
+					mb: 2,
+					position: 'relative',
+					bottom: 0,
+					width: '100%',
+				}}
+			>
+				<Typography variant="body2">
+					&copy; 2024 HybridChatbot. All rights reserved.
+				</Typography>
 			</Box>
 		</Box>
 	);
 };
 
 export default LandingPage;
-

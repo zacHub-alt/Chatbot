@@ -236,7 +236,7 @@ const ChatPage = () => {
         {!inputAtBottom ? (
           <Container maxWidth="md" style={{ textAlign: 'center' }}>
             <Typography variant="h3" component="h1" gutterBottom align="center" style={{ color: 'white' }} mt="15vh">
-            Hi, I'm Hybrid, your intelligent support assistant
+             Hi, I&apos;m Hybrid, your intelligent support assistant
             </Typography>
             <Typography variant="h5" paragraph align="center" style={{ color: '#b0b0b0' }}>
             Get instant solutions, personalized support, effortless interactions, proactive guidance, and 24/7 availability - all in one place, with me, Hybrid, your personal assistant.
@@ -317,27 +317,27 @@ const ChatPage = () => {
                       }}
                     >
                       <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                        rehypePlugins={[rehypeHighlight]}
-                        components={{
-                          code({ inline, className, children, ...props }) {
-                            const match = /language-(\w+)/.exec(className || '');
-                            return !inline && match ? (
-                              <Box component="pre" className={className} {...props} style={{ margin: 0 }}>
-                                <Box component="code" className={className} {...props}>
-                                  {children}
-                                </Box>
-                              </Box>
-                            ) : (
-                              <Box component="code" className={className} {...props} style={{ backgroundColor: '#555' }}>
-                                {children}
-                              </Box>
-                            );
-                          },
+  remarkPlugins={[remarkGfm]}
+  rehypePlugins={[rehypeHighlight]}
+  components={{
+    code({ inline, className, children, ...props }) {
+      const match = /language-(\w+)/.exec(className || '');
+      return !inline && match ? (
+        <Box component="pre" className={className} {...props} style={{ margin: 0 }}>
+          <Box component="code" className={className} {...props}>
+            {children}
+          </Box>
+        </Box>
+      ) : (
+        <Box component="code" className={className} {...props} style={{ backgroundColor: '#555' }}>
+          {children}
+        </Box>
+      );
+                       },
                         }}
-                      >
-                        {msg.content}
-                      </ReactMarkdown>
+>
+                     {msg.content}
+                    </ReactMarkdown>
                     </Box>
                   </Grow>
                 </Box>
