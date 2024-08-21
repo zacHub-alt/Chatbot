@@ -180,7 +180,7 @@ const LandingPage = () => {
 						HybridChatbot: Your Personal Customer Service Assistant
 					</Typography>
 					<Typography variant="h6" sx={{ mb: 4 }}>
-						"Meet Hybrid, your AI-powered companion for effortless customer service. Get instant answers, personalized support, and seamless interactions &mdash; all in one conversation."
+						&ldquo;Meet Hybrid, your AI-powered companion for effortless customer service. Get instant answers, personalized support, and seamless interactions &mdash; all in one conversation.&rdquo;
 					</Typography>
 					<Button
 						onClick={handleSignUp}
@@ -204,49 +204,66 @@ const LandingPage = () => {
 			</Box>
 
 			{/* AI Capabilities Section */}
-			<Box sx={{ py: 10, background: '#1e1e1e', color: 'white', minHeight: '100vh' }}>
-				<Container maxWidth="lg">
-					<Typography color="white" variant="h4" fontWeight="bold" textAlign="center" gutterBottom>
-						HybridChatbot: Your Ultimate Support Companion
+			<Box
+				sx={{
+					py: 10,
+					background: '#1e1e1e',
+					width: '100vw',
+					position: 'relative',
+					overflow: 'hidden'
+				}}
+			>
+				<Container
+					maxWidth="lg"
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						justifyContent: 'center',
+						position: 'relative',
+						zIndex: 1,
+					}}
+				>
+					<Typography variant="h4" fontWeight="bold" gutterBottom sx={{ textAlign: 'center', color: 'white' }}>
+						AI Capabilities
 					</Typography>
-					<Box sx={{ mb: 6 }} /> {/* Additional space between heading and cards */}
-					<Grid container spacing={4}>
+					<Grid container spacing={4} justifyContent="center">
 						{features.map((feature, index) => (
-							<FeatureCard key={index} {...feature} />
+							<FeatureCard key={index} icon={feature.icon} title={feature.title} description={feature.description} />
 						))}
 					</Grid>
 				</Container>
 			</Box>
-			
+
 			{/* Product Contributors Section */}
 			<Box sx={{ py: 5, background: '#121212', color: 'white', height: 'auto' }}>
 				<Container maxWidth="md">
 					<Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom>
 						Product Contributors
 					</Typography>
-					<Typography variant="h6" textAlign="center" sx={{ mb: 2 }}>
-						This project was made possible due to the contribution from my teammates Utta and Sharif.
+					<Typography variant="h6" textAlign="center" sx={{ mb: 3 }}>
+						Meet the brilliant minds behind HybridChatbot
 					</Typography>
-					{/* Add team member details or links here */}
+					<Box
+						display="flex"
+						justifyContent="center"
+						flexWrap="wrap"
+						sx={{ gap: 2 }}
+					>
+						<Avatar sx={{ width: 100, height: 100, mb: 2 }} src="/1709810283623.jpg" />
+						<Avatar sx={{ width: 100, height: 100, mb: 2 }} src="/1711436309342.jpg" />
+						<Avatar sx={{ width: 100, height: 100, mb: 2 }} src="/1723587989019.jpg" />
+					</Box>
 				</Container>
 			</Box>
 
-			{/* Footer Section */}
-			<Box
-				sx={{
-					background: '#0d0d0d',
-					color: 'white',
-					p: 2,
-					textAlign: 'center',
-					mb: 2,
-					position: 'relative',
-					bottom: 0,
-					width: '100%',
-				}}
-			>
-				<Typography variant="body2">
-					&copy; 2024 HybridChatbot. All rights reserved.
-				</Typography>
+			{/* Footer */}
+			<Box sx={{ py: 3, background: '#121212', color: 'white' }}>
+				<Container maxWidth="md" sx={{ textAlign: 'center' }}>
+					<Typography variant="body2">
+						&copy; {new Date().getFullYear()} HybridChatbot. All rights reserved.
+					</Typography>
+				</Container>
 			</Box>
 		</Box>
 	);
