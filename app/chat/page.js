@@ -15,7 +15,6 @@ import {
   Menu,
   MenuItem,
 } from '@mui/material';
-import Typewriter from 'react-typewriter-effect';
 import { AccountCircle, Logout, Send } from '@mui/icons-material';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -25,18 +24,6 @@ import { useRouter } from 'next/navigation';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { firestore, auth } from '@/firebase';
 import withAuth from '../protectedRoute';
-
-const typingEffect = (text, setMessages, index = 0) => {
-  if (index < text.length) {
-    setMessages((prevMessages) => {
-      const updatedMessages = [...prevMessages];
-      const lastMessage = updatedMessages[updatedMessages.length - 1];
-      lastMessage.content = text.slice(0, index + 1);
-      return updatedMessages;
-    });
-    setTimeout(() => typingEffect(text, setMessages, index + 1), ); // Adjust typing speed here
-  }
-};
 
 function BotIcon(props) {
   return (
@@ -93,10 +80,10 @@ const ChatPage = () => {
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
-  
+
       const text = decoder.decode(value, { stream: true });
       accumulatedText += text;
-      typingEffect(accumulatedText, setMessages); // Update the messages with typing effect
+      updateLastMessage(accumulatedText, setMessages); // Directly update the message content
     }
   };  
 
@@ -159,28 +146,28 @@ const ChatPage = () => {
       sendMessage();
     }
   };
-
+  
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
-
+  
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
+  
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+  
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-
+  
   const handleSignOut = async () => {
     await signOut(auth);
     router.push('/');
   };
-
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -191,20 +178,18 @@ const ChatPage = () => {
         setUserUid('');
       }
     });
-
+  
     return () => unsubscribe();
   }, []);
-
+  
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#121212', color: 'white' }}>
       <AppBar position="static" elevation={0} style={{ backgroundColor: '#121212', color: 'white' }}>
         <Toolbar>
-          
-
           <Typography variant="h6" style={{ flexGrow: 1, marginLeft: 10 }}>
             HybridChatbot
           </Typography>
-
+  
           <IconButton onClick={handleMenuOpen} sx={{ marginLeft: 'auto' }}>
             <AccountCircle fontSize="large" sx={{ color: '#afafaf' }} />
           </IconButton>
@@ -231,15 +216,15 @@ const ChatPage = () => {
           </Menu>
         </Toolbar>
       </AppBar>
-
+  
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: '55px' }}>
         {!inputAtBottom ? (
           <Container maxWidth="md" style={{ textAlign: 'center' }}>
             <Typography variant="h3" component="h1" gutterBottom align="center" style={{ color: 'white' }} mt="15vh">
-             Hi, I&apos;m Hybrid, your intelligent support assistant
+              Hi, I&apos;m Hybrid, your intelligent support assistant
             </Typography>
             <Typography variant="h5" paragraph align="center" style={{ color: '#b0b0b0' }}>
-            Get instant solutions, personalized support, effortless interactions, proactive guidance, and 24/7 availability - all in one place, with me, Hybrid, your personal assistant.
+              Get instant solutions, personalized support, effortless interactions, proactive guidance, and 24/7 availability - all in one place, with me, Hybrid, your personal assistant.
             </Typography>
             <Box mt={4} display="flex" justifyContent="center">
               <TextField
@@ -262,10 +247,10 @@ const ChatPage = () => {
                   color: 'white',
                   borderRadius: '50px',
                   width: '600px',
-
+  
                   '& .MuiOutlinedInput-root': {
                     borderRadius: '50px',
-
+  
                     '& fieldset': {
                       borderColor: '#555',
                     },
@@ -307,7 +292,7 @@ const ChatPage = () => {
                   <Grow in timeout={500}>
                     <Box
                       sx={{
-                        bgcolor: msg.role === 'user' ?  '#3f3f3f' : '#333',
+                        bgcolor: msg.role === 'user' ? '#3f3f3f' : '#333',
                         color: 'white',
                         padding: '10px 15px',
                         borderRadius: '12px',
