@@ -236,26 +236,38 @@ const LandingPage = () => {
 			</Box>
 
 			{/* Product Contributors Section */}
-			<Box sx={{ py: 5, background: '#121212', color: 'white', height: 'auto' }}>
-				<Container maxWidth="md">
-					<Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom>
-						Product Contributors
-					</Typography>
-					<Typography variant="h6" textAlign="center" sx={{ mb: 3 }}>
-						Meet the brilliant minds behind HybridChatbot
-					</Typography>
-					<Box
-						display="flex"
-						justifyContent="center"
-						flexWrap="wrap"
-						sx={{ gap: 2 }}
-					>
-						<Avatar sx={{ width: 100, height: 100, mb: 2 }} src="/1709810283623.jpg" />
-						<Avatar sx={{ width: 100, height: 100, mb: 2 }} src="/1711436309342.jpg" />
-						<Avatar sx={{ width: 100, height: 100, mb: 2 }} src="/1723587989019.jpg" />
-					</Box>
-				</Container>
-			</Box>
+<Box sx={{ py: 5, background: '#121212', color: 'white', height: 'auto' }}>
+    <Container maxWidth="md">
+        <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom>
+            Product Contributors
+        </Typography>
+        <Typography variant="h6" textAlign="center" sx={{ mb: 3 }}>
+            Meet the brilliant minds behind HybridChatbot
+        </Typography>
+        <Box
+            display="flex"
+            justifyContent="center"
+            flexWrap="wrap"
+            sx={{ gap: 2 }}
+        >
+            {/* First Image - Sharif Saeed */}
+            <a href="https://www.linkedin.com/in/sharif-saeed-3922992b9/" target="_blank" rel="noopener noreferrer">
+                <Avatar sx={{ width: 100, height: 100, mb: 2 }} src="/1709810283623.jpg" alt="Sharif Saeed" />
+            </a>
+            
+            {/* Second Image - Uttkarsh Tewari */}
+            <a href="https://www.linkedin.com/in/uttkarsh-tewari-660855210/" target="_blank" rel="noopener noreferrer">
+                <Avatar sx={{ width: 100, height: 100, mb: 2 }} src="/1711436309342.jpg" alt="Uttkarsh Tewari" />
+            </a>
+            
+            {/* Third Image - Enoch Iwala */}
+            <a href="https://www.linkedin.com/in/enoch-iwala-502721311/" target="_blank" rel="noopener noreferrer">
+                <Avatar sx={{ width: 100, height: 100, mb: 2 }} src="/1723587989019.jpg" alt="Enoch Iwala" />
+            </a>
+        </Box>
+    </Container>
+</Box>
+
 
 			{/* Footer */}
 			<Box sx={{ py: 3, background: '#121212', color: 'white' }}>
